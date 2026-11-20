@@ -1,0 +1,30 @@
+name: .NET Unit Tests
+
+on:
+  pull_request:
+
+jobs:
+  dotnet-test:
+    # ↓ Change this to "false" to disable the workflow without any alert messages.
+    if: ${{ false }}
+    # ↑ Change to "true" (or delete) to enable the workflow.
+    
+    name: Run unit tests
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
+        with:
+          global-json-file: global.json
+
+      - name: Build
+        run: dotnet restore && build --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal

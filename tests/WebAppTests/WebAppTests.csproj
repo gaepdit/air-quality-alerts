@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WebApp\WebApp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Remove="coverlet.collector" />
+  </ItemGroup>
+</Project>
