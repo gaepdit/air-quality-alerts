@@ -1,4 +1,4 @@
-namespace DaemonApp;
+namespace Daemon;
 
 public class WorkerBackgroundService(ILogger<WorkerBackgroundService> logger) : BackgroundService
 {

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Worker">
   <PropertyGroup>
-    <UserSecretsId>dotnet-DaemonApp-1405781e-bd8c-4286-91b9-e67e7a7bafd9</UserSecretsId>
+    <UserSecretsId>dotnet-Daemon-1405781e-bd8c-4286-91b9-e67e7a7bafd9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 </Project>

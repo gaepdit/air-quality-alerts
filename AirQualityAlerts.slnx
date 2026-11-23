@@ -4,15 +4,11 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/DaemonAppTests/DaemonAppTests.csproj" />
-    <Project Path="tests/DomainTests/DomainTests.csproj" />
-    <Project Path="tests/RepositoryTests/RepositoryTests.csproj" />
+    <Project Path="tests/DaemonTests/DaemonTests.csproj" />
     <Project Path="tests/ServicesTests/ServicesTests.csproj" />
     <Project Path="tests/WebAppTests/WebAppTests.csproj" />
   </Folder>
-  <Project Path="src/DaemonApp/DaemonApp.csproj" />
-  <Project Path="src/Domain/Domain.csproj" />
-  <Project Path="src/Repository/Repository.csproj" />
+  <Project Path="src/Daemon/Daemon.csproj" />
   <Project Path="src/Services/Services.csproj" />
   <Project Path="src/WebApp/WebApp.csproj" />
 </Solution>

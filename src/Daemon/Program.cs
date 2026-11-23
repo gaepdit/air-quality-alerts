@@ -1,4 +1,4 @@
-using DaemonApp;
+using Daemon;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddWindowsService();

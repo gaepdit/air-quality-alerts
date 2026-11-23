@@ -13,35 +13,43 @@ statewide to provide a better understanding of real-time air quality.
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gaepdit.air-quality-alerts&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=gaepdit.air-quality-alerts)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=gaepdit.air-quality-alerts&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=gaepdit.air-quality-alerts)
 
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/c81151b9faabd47046c88434ab30890a34d12505.svg)
+
 ## Solution organization
 
 The solution contains the following projects along with their corresponding unit test projects.
 
-
-* **Domain** — A class library defining the data models and service interfaces
-* **Services** — A class library implementing various services required by the apps
+* **Services** — Class library/libraries implementing various services required by the apps
     * *MailRetrievalService* — A service to retrieve unprocessed emails from the mailbox
-    * *ParserService* — A service to parse emails from the ambient monitors
-    * *TemplatingService* — A service to generate messages for the public from the parsed emails
-    * *DeliveryService* — A service to deliver the messages to the public
+    * *MailParserService* — A service to parse emails from the ambient monitors and generate templated messages for the
+      public
+    * *MessageDeliveryService* — A service to deliver the messages to the public
+    * *RepositoryService* — A service to store the results of mail retrieval, mail parsing, and message delivery
     * *NotificationService* — A service to notify administrators of failures or errors
-* **Repository** — A class library implementing the repositories and data stores using Entity Framework
-* **DaemonApp** — A Windows service accomplishing the main functionality
-* **WebApp** — A web application for use by APB staff to monitor the status and past actions taken by the application
+* **Daemon** — A Windows service that periodically retrieves and disseminates ambient monitoring data
+* **WebApp** — A web application for use by APB and EPD-IT staff to monitor the status and past actions taken by the
+  daemon
+    * `/Status` — Status of daemon
+    * `/RunLog` — Log of attempts to retrieve emails (from *RepositoryService*)
+    * `/MessageLog` — Log of messages parsed and delivered (from *RepositoryService*)
+    * `/ParserTest` — Page for testing the parsing and translating service (using *MailParserService*)
 
 ### Project dependency diagram
 
 ```mermaid
-flowchart TB
-    D[DaemonApp]
+flowchart LR
+    D[Daemon]
     W[WebApp]
-    S[Services]
-    R[Repository]
-    C[Domain]
+    M[Mail Retrieval Service]
+    P[Mail Parser Service]
+    V[Message Delivery Service]
+    R[Repository Service]
+    N[Notification Service]
+    D --> M
+    D --> V
+    D --> N
+    D --> P
     D --> R
-    D --> S
+    W --> P
     W --> R
-    W --> S
-    R --> C
-    S --> C
 ```

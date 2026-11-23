@@ -1,4 +1,4 @@
-﻿namespace RepositoryTests;
+﻿namespace DaemonTests;
 
 public class Tests
 {
