@@ -1,0 +1,29 @@
+﻿@page
+@using WebApp.AppConfig
+@model SupportModel
+@{
+    ViewData["Title"] = "Support";
+}
+
+<h1>Air Quality Alert Notification System Support</h1>
+
+<p>For support, <a href="@AppSettings.TechnicalSupportSite" target="_blank" rel="noopener">open a support ticket</a>.
+</p>
+
+<div class="callout callout-info">
+    <small>
+        This application was developed by Georgia EPD-IT.<br />
+        @if (!string.IsNullOrEmpty(AppSettings.Version))
+        {
+            @:Current version: <em>@AppSettings.Version</em>
+        }
+        <br />
+        View the
+        <a href="https://github.com/gaepdit/air-quality-alerts/blob/main/CHANGELOG.md" target="_blank" rel="noopener"
+           class="text-decoration-hover link-offset-2">Changelog</a>.
+        <br />
+        Source code available on
+        <a href="https://github.com/gaepdit/air-quality-alerts" target="_blank" rel="noopener"
+           class="text-decoration-hover link-offset-2">GitHub</a>.
+    </small>
+</div>

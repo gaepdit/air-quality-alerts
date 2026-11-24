@@ -32,7 +32,7 @@ The solution contains the following projects along with their corresponding unit
     * `/Status` — Status of daemon
     * `/RunLog` — Log of attempts to retrieve emails (from *RepositoryService*)
     * `/MessageLog` — Log of messages parsed and delivered (from *RepositoryService*)
-    * `/ParserTest` — Page for testing the parsing and translating service (using *MailParserService*)
+    * `/TemplateTest` — Page for testing the parsing and translating service (using *MailParserService*)
 
 ### Project dependency diagram
 
