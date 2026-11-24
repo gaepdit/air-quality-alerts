@@ -1,9 +1,14 @@
+using Daemon.AppConfig;
+
 namespace Daemon;
 
-public class WorkerBackgroundService(ILogger<WorkerBackgroundService> logger) : BackgroundService
+public class WorkerBackgroundService(ILogger<WorkerBackgroundService> logger)
+    : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var interval = AppSettings.EmailCheckFrequency!.Value * 60_000;
+
         while (!stoppingToken.IsCancellationRequested)
         {
             if (logger.IsEnabled(LogLevel.Information))
@@ -11,7 +16,7 @@ public class WorkerBackgroundService(ILogger<WorkerBackgroundService> logger) : 
                 logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             }
 
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(interval, stoppingToken);
         }
     }
 }
