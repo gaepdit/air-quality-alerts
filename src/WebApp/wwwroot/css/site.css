@@ -34,8 +34,13 @@ html {
     padding: 1rem 1.5rem;
     position: absolute;
     top: -4.2rem;
-    transition: all 0.2s ease-in-out;
     z-index: 2002;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .skip-nav {
+        transition: top 0.2s ease-in-out;
+    }
 }
 
 .skip-nav:focus {
@@ -51,13 +56,12 @@ html {
     height: 26px;
     top: 0;
     z-index: 2001;
-    color: hsl(var(--base-hue), 0%, 20%);
     font-weight: 700;
     font-size: 16px;
     font-family: system-ui;
     text-transform: uppercase;
     text-align: center;
-    text-shadow: 0 0 4px hsl(var(--base-hue), 0%, 100%);
+    text-shadow: 0 0 4px #fff;
     background: repeating-linear-gradient(135deg, hsl(50, 90%, 64%), hsl(50, 90%, 64%) 10px, hsl(50, 100%, 75%) 10px, hsl(50, 100%, 75%) 20px);
     box-shadow: 0 3px 7px oklch(0.65 0.13 90.74 / 0.4);
     padding: 1px 0;
@@ -68,8 +72,7 @@ html {
 }
 
 [data-bs-theme="dark"] .banner-test-site {
-    color: hsl(var(--base-hue), 0%, 100%);
-    text-shadow: 0 0 6px hsl(var(--base-hue), 0%, 0%);
+    text-shadow: 0 0 4px #000;
     background: repeating-linear-gradient(135deg, hsl(50, 90%, 36%), hsl(50, 90%, 36%) 10px, hsl(50, 40%, 25%) 10px, hsl(50, 40%, 25%) 20px);
     box-shadow: 0 3px 7px oklch(0.18 0.03 91.75 / 0.8);
 }
