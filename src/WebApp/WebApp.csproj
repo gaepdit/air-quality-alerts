@@ -3,9 +3,11 @@
     <InformationalVersion>0.0.1</InformationalVersion>
     <AssemblyName>AirQualityAlerts.WebApp</AssemblyName>
   </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" />
     <PackageReference Include="LigerShark.WebOptimizer.Core" />
@@ -13,6 +15,7 @@
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
     <PackageReference Include="ZLogger" />
   </ItemGroup>
+
   <ItemGroup>
     <Content Update="libman.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -25,6 +28,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </None>
   </ItemGroup>
+
   <ItemGroup>
     <MsDeploySkipRules Include="SkipAppSettings">
       <ObjectName>filePath</ObjectName>
@@ -34,10 +38,5 @@
       <ObjectName>filePath</ObjectName>
       <AbsolutePath>web.config</AbsolutePath>
     </MsDeploySkipRules>
-  </ItemGroup>
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.js" />
-    <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
-    <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 </Project>

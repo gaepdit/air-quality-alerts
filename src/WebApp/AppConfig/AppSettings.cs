@@ -17,7 +17,7 @@ internal static class AppSettings
 
         Version = GetVersion();
         builder.AddKeyVault();
-        TechnicalSupportSite = builder.Configuration.GetValue<string>("TechnicalSupportSite");
+        TechnicalSupportSite = builder.Configuration.GetValue<string>(nameof(TechnicalSupportSite));
         return builder;
     }
 
