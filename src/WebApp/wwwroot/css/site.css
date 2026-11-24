@@ -1,3 +1,5 @@
+/* Adjust font sizing
+-------------------------------------------------- */
 html {
     font-size: 14px;
 }
@@ -8,31 +10,131 @@ html {
     }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Theme colors 
+-------------------------------------------------- */
+.text-bg-brand {
+    background-color: #00000011;
 }
 
-.navbar-light .navbar-brand:focus-visible, .navbar-light .navbar-nav .nav-link:focus-visible {
-    outline: 2px solid #212529;
-    outline-offset: 2px;
-    border-radius: 2px;
-    box-shadow: none;
+/* Dark mode theme colors */
+[data-bs-theme="dark"] .text-bg-brand {
+    background-color: #ffffff22;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+/* Nav bar
+-------------------------------------------------- */
+.img-logo {
+    height: 40px;
 }
 
-body {
-    margin-bottom: 60px;
+/* Skip to content link
+-------------------------------------------------- */
+.skip-nav {
+    left: .2rem;
+    padding: 1rem 1.5rem;
+    position: absolute;
+    top: -4.2rem;
+    z-index: 2002;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
+@media (prefers-reduced-motion: no-preference) {
+    .skip-nav {
+        transition: top 0.2s ease-in-out;
+    }
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-    text-align: start;
+.skip-nav:focus {
+    outline: 0;
+    top: .2rem;
+}
+
+/* Banner for test site
+-------------------------------------------------- */
+.banner-test-site {
+    position: fixed;
+    width: 100%;
+    height: 26px;
+    top: 0;
+    z-index: 2001;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: system-ui;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 4px #fff;
+    background: repeating-linear-gradient(135deg, hsl(50, 90%, 64%), hsl(50, 90%, 64%) 10px, hsl(50, 100%, 75%) 10px, hsl(50, 100%, 75%) 20px);
+    box-shadow: 0 3px 7px oklch(0.65 0.13 90.74 / 0.4);
+    padding: 1px 0;
+}
+
+.banner-test-site ~ header {
+    padding-top: 26px;
+}
+
+[data-bs-theme="dark"] .banner-test-site {
+    text-shadow: 0 0 4px #000;
+    background: repeating-linear-gradient(135deg, hsl(50, 90%, 36%), hsl(50, 90%, 36%) 10px, hsl(50, 40%, 25%) 10px, hsl(50, 40%, 25%) 20px);
+    box-shadow: 0 3px 7px oklch(0.18 0.03 91.75 / 0.8);
+}
+
+/* Prevent banner from covering up link target elements. 
+   See: https://www.bram.us/2020/03/01/prevent-content-from-being-hidden-underneath-a-fixed-header-by-using-scroll-margin-top/ */
+:target {
+    scroll-margin-top: 1.5rem;
+}
+
+/* Callouts
+-------------------------------------------------- */
+/* Adapted from the Bootstrap Docs (https://getbootstrap.com/).
+  Licensed under the Creative Commons Attribution 3.0 Unported License. */
+
+:root, [data-bs-theme="light"] {
+    --callout-link: 10, 88, 202;
+}
+
+[data-bs-theme="dark"] {
+    --callout-link: 110, 168, 254;
+}
+
+.callout {
+    --bs-link-color-rgb: var(--callout-link);
+    --callout-color: var(--bs-body-color);
+    --callout-bg: var(--bs-dark-bg-subtle);
+    --callout-border: var(--bs-dark-border-subtle);
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--callout-color, inherit);
+    background-color: var(--callout-bg, var(--bs-gray-200));
+    border-left: 0.25rem solid var(--callout-border, var(--bs-gray-400));
+}
+
+.callout > :last-child {
+    margin-bottom: 0;
+}
+
+.callout + .callout {
+    margin-top: -.25rem;
+}
+
+.callout .highlight {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.callout-info {
+    --callout-color: var(--bs-info-text-emphasis);
+    --callout-bg: var(--bs-info-bg-subtle);
+    --callout-border: var(--bs-info-border-subtle);
+}
+
+.callout-warning {
+    --callout-color: var(--bs-warning-text-emphasis);
+    --callout-bg: var(--bs-warning-bg-subtle);
+    --callout-border: var(--bs-warning-border-subtle);
+}
+
+.callout-danger {
+    --callout-color: var(--bs-danger-text-emphasis);
+    --callout-bg: var(--bs-danger-bg-subtle);
+    --callout-border: var(--bs-danger-border-subtle);
 }

@@ -1,26 +1,40 @@
+using WebApp.AppConfig;
+using ZLogger;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+// Configure logging
+builder.Logging.ClearProviders().AddZLoggerConsole(options => options.UseJsonFormatter());
 
+// Configure basic settings.
+builder.LoadAppSettings().AddHttpSecurity();
+builder.Services.AddDataProtection();
+
+// Configure authentication and authorization.
+builder.ConfigureAuthentication();
+builder.Services.AddAuthorization();
+
+// Configure the UI.
+builder.Services.AddRazorPages();
+builder.AddWebOptimizer();
+
+// Build the application.
 var app = builder.Build();
 
+// Configure error handling.
+if (app.Environment.IsDevelopment()) app.UseDeveloperExceptionPage(); // Development
+else app.UseExceptionHandler("/Error"); // Production or Staging
+
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+app
+    .UseStatusCodePages()
+    .UseHttpsRedirection()
+    .UseWebOptimizer()
+    .UseStaticFiles()
+    .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization();
 
-app.UseHttpsRedirection();
+app.MapRazorPages();
 
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapStaticAssets();
-app.MapRazorPages()
-    .WithStaticAssets();
-
-app.Run();
+await app.RunAsync();
